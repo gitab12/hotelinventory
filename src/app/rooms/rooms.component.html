@@ -1,0 +1,30 @@
+<p>rooms works!</p>
+<!-- interpolation -->
+<h1> welcome to {{hotelname}}</h1>
+<!-- property binding -->
+
+Number of rooms:<div [innerHTML]="numberofrooms"></div>
+
+<div *ngIf="room.availablerooms > 0">
+    Room List
+    <table>
+        <tr>
+            <th>Index</th>
+            <th>Roomstype </th>
+            <th>Checkintime</th>
+            <th>Checkout</th>
+            <th>Cost</th>
+
+        </tr>
+        <tr *ngFor="let room of roomlist let i=  index">
+           <td>{{i}}</td>
+            <td>{{room.roomstype}}</td>
+            <td>{{room.checkintime |date}}</td>
+            <td>{{room.checkout | date}}</td>
+            <td>{{room.cost}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<button (click)="toggle()">Toggle</button>
