@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { RoomsComponent } from './rooms/rooms.component';
-
-
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, RoomsComponent]
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'hotelinventory';
-  role = 'admin'
+  role = 'admin';
 }
