@@ -1,14 +1,15 @@
-
 <!-- interpolation -->
 <h1> Welcome to {{hotelname}}</h1>
 <!-- property binding -->
 
 Number of rooms:<div [innerHTML]="numberofrooms"></div>
 
-<div *ngIf="room.availablerooms > 0">
-   
-<app-roomlist [roombind]= "roomlist" (SelectedRoom) = "SelectRoom($event)"></app-roomlist>
+<button class="btn btn-primary" (click)="addroom()">Add Room</button>
 
-    </div>
+<div *ngIf="room.availablerooms > 0">
+
+    <app-roomlist [roombind]="roomlist" (SelectedRoom)="SelectRoom($event)"></app-roomlist>
+
+</div>
 
 <button (click)="toggle()">Toggle</button>

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy,Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Rooms, RoomsList } from './roomsinterface';
 import { CommonModule } from '@angular/common';
 import { RoomlistComponent } from './roomlist/roomlist.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
@@ -11,11 +12,13 @@ import { RoomlistComponent } from './roomlist/roomlist.component';
   styleUrl: './rooms.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit,AfterViewChecked {
 
   hotelname = "Hotel Inventory";
   numberofrooms = 10;
   hiderooms = false;
+  title = "rooms";
+
 
   toggle() {
     this.hiderooms = !this.hiderooms
@@ -27,10 +30,10 @@ export class RoomsComponent implements OnInit {
       checkout: new Date(),
       cost: 1300
     }
-   //to add the new record with the existing record (to achive imutablity we use spread operator i.e ... 3dots)
-   // below code says that add the new record with and exixting record[...this.roomlist -add the exixting record,room-add the new record with exixting record]
-   this.roomlist = [...this.roomlist,room]
-   // this.roomlist.push(room);
+    //to add the new record with the existing record (to achive imutablity we use spread operator i.e ... 3dots)
+    // below code says that add the new record with and exixting record[...this.roomlist -add the exixting record,room-add the new record with exixting record]
+    this.roomlist = [...this.roomlist, room]
+    // this.roomlist.push(room);
   }
   SelectRoom(room: RoomsList) {
     console.log(room);
@@ -43,7 +46,21 @@ export class RoomsComponent implements OnInit {
     }
 
   roomlist: RoomsList[] = [];
+
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
+
+  @ViewChildren(HeaderComponent) headerchildrenComponent !: QueryList<HeaderComponent>;
+
   constructor() { }
+  ngAfterViewChecked(): void {
+
+   
+  }
+  ngDoCheck(): void {
+
+  }
+
+
   ngOnInit(): void {
     this.roomlist = [
 
@@ -62,4 +79,10 @@ export class RoomsComponent implements OnInit {
     ]
 
   }
+
+  ngAfterViewInit(): void {
+    this.headerComponent.title = "Room View";
+this.headerchildrenComponent.last.title="last"
+  }
+  
 }
