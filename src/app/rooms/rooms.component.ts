@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class RoomsComponent {
 
   
-  hotelname ="Empire";
+  hotelname ="Hotel Inventory";
   numberofrooms =10;
   hiderooms =false;
   
@@ -29,14 +29,14 @@ export class RoomsComponent {
   roomlist : RoomsList[] = [
   {
     roomstype: 1,
-    checkintime: new Date('23-12-2023'),
-    checkout:new Date( 25-12-2023),
+    checkintime: new Date(),
+    checkout:new Date(),
     cost: 1200
   },
   {
     roomstype: 2,
-    checkintime: new Date('23-12-2023'),
-    checkout:new Date( 25-12-2023),
+    checkintime: new Date(),
+    checkout:new Date(),
     cost: 1300
   }
   
