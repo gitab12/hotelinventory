@@ -1,0 +1,18 @@
+Room List
+<table class="table">
+    <tr>
+        <th>Index</th>
+        <th>Roomstype </th>
+        <th>Checkintime</th>
+        <th>Checkout</th>
+        <th>Cost</th>
+
+    </tr>
+    <tr *ngFor="let room of roombind let i=  index">
+       <td>{{i}}</td>
+        <td>{{room.roomstype}}</td>
+        <td>{{room.checkintime}}</td>
+        <td>{{room.checkout}}</td>
+        <td>{{room.cost}}</td>
+    </tr>
+</table>
