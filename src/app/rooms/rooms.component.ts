@@ -18,6 +18,10 @@ export class RoomsComponent implements OnInit{
   toggle(){
     this.hiderooms = !this.hiderooms
   }
+  SelectRoom(room:RoomsList)
+  {
+    console.log(room);
+  }
   room : Rooms=
   {
   availablerooms :10,

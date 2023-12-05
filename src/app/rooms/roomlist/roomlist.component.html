@@ -6,6 +6,7 @@ Room List
         <th>Checkintime</th>
         <th>Checkout</th>
         <th>Cost</th>
+        <th>Select Room</th>
 
     </tr>
     <tr *ngFor="let room of roombind let i=  index">
@@ -14,5 +15,9 @@ Room List
         <td>{{room.checkintime}}</td>
         <td>{{room.checkout}}</td>
         <td>{{room.cost}}</td>
+        <td>
+            <button class="btn btn-primary" (click)="SelectRoom(room)">Select
+            </button>
+        </td>
     </tr>
 </table>
