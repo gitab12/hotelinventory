@@ -12,8 +12,8 @@ Room List
     <tr *ngFor="let room of roombind let i=  index">
        <td>{{i}}</td>
         <td>{{room.roomstype}}</td>
-        <td>{{room.checkintime}}</td>
-        <td>{{room.checkout}}</td>
+        <td>{{room.checkintime | date}}</td>
+        <td>{{room.checkout | date}}</td>
         <td>{{room.cost}}</td>
         <td>
             <button class="btn btn-primary" (click)="SelectRoom(room)">Select
