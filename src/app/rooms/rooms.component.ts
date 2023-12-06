@@ -3,6 +3,7 @@ import { Rooms, RoomsList } from './roomsinterface';
 import { CommonModule } from '@angular/common';
 import { RoomlistComponent } from './roomlist/roomlist.component';
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './service/rooms.service';
 
 @Component({
   selector: 'app-rooms',
@@ -12,7 +13,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './rooms.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsComponent implements OnInit, DoCheck, AfterViewInit,AfterViewChecked {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
 
   hotelname = "Hotel Inventory";
   numberofrooms = 10;
@@ -51,10 +52,12 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit,AfterViewC
 
   @ViewChildren(HeaderComponent) headerchildrenComponent !: QueryList<HeaderComponent>;
 
-  constructor() { }
+  constructor(private roomservice :RoomsService) { 
+
+  }
   ngAfterViewChecked(): void {
 
-   
+
   }
   ngDoCheck(): void {
 
@@ -62,27 +65,13 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit,AfterViewC
 
 
   ngOnInit(): void {
-    this.roomlist = [
-
-      {
-        roomstype: 1,
-        checkintime: new Date(),
-        checkout: new Date(),
-        cost: 1200
-      },
-      {
-        roomstype: 2,
-        checkintime: new Date(),
-        checkout: new Date(),
-        cost: 1300
-      }
-    ]
+   this.roomlist = this.roomservice.getroomlist();
 
   }
 
   ngAfterViewInit(): void {
-    this.headerComponent.title = "Room View";
-this.headerchildrenComponent.last.title="last"
+    this.headerComponent.title1 = "Room";
+    this.headerchildrenComponent.last.title1 = "last"
   }
-  
+
 }

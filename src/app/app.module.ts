@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule
     //,RoomsComponent
   ],
- // exports: [ContainerComponent]
+ providers: [],
+ bootstrap: [AppModule]
 })
 export class AppModule { }
